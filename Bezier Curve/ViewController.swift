@@ -10,16 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var bezierView: BezierCurve!
+    @IBOutlet weak var numberOfSegmentsSlider: UISlider!
+    @IBOutlet weak var numberOfSegmentsLabel: UILabel!
+    @IBOutlet weak var curveSelector: UISegmentedControl!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        numberOfSegmentsLabel.text = "\(bezierView.numberOfLineSegments)"
+        numberOfSegmentsSlider.value = Float(bezierView.numberOfLineSegments)
+    }
+    
+    
+    
+    // -------------------------------
+    // MARK: Actions
+    // -------------------------------
+    
+    @IBAction func didChangeNumberOfSegments() {
+        bezierView.numberOfLineSegments = Int(numberOfSegmentsSlider.value)
+        numberOfSegmentsLabel.text = "\(bezierView.numberOfLineSegments)"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func curveTypeDidChange() {
+        bezierView.degree = selectedCurveType()
     }
-
+    
+    private func selectedCurveType() -> BezierCurve.BezierDegree {
+        switch curveSelector.selectedSegmentIndex {
+            case 0: return .Linear
+            case 1: return .Quadratic
+            case 2: return .Cubic
+            default: return .Cubic
+        }
+    }
 
 }
 

@@ -1,25 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PET-tW-jCN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="tc6-sW-zJ2">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PET-tW-jCN" customClass="ViewController" customModule="Bezier_Curve" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="9NK-bU-G7F"/>
+                        <viewControllerLayoutGuide type="bottom" id="2pK-ID-leh"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="46J-oe-3RG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="2" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-e5-E4G">
+                                <rect key="frame" x="169" y="550" width="413" height="31"/>
+                                <connections>
+                                    <action selector="didChangeNumberOfSegments" destination="PET-tW-jCN" eventType="valueChanged" id="ycS-cM-r77"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segments:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNI-JV-AMG">
+                                <rect key="frame" x="20" y="554" width="82" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Awu-K4-9ro"/>
+                                    <constraint firstAttribute="width" constant="82" id="bld-2y-Mgx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY2-D7-Ybi">
+                                <rect key="frame" x="110" y="554" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FaE-S8-FlA"/>
+                                    <constraint firstAttribute="width" constant="53" id="rzV-Yo-R91"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uK-Qc-MMZ" customClass="BezierCurve" customModule="Bezier_Curve" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="RiK-K8-n38">
+                                <rect key="frame" x="175" y="514" width="250" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="FbB-cA-3Pt"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Linear"/>
+                                    <segment title="Quadratic"/>
+                                    <segment title="Cubic"/>
+                                </segments>
+                                <connections>
+                                    <action selector="curveTypeDidChange" destination="PET-tW-jCN" eventType="valueChanged" id="kII-Kq-hGM"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97568108974358969" green="0.97568108974358969" blue="0.97568108974358969" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3aS-e5-E4G" firstAttribute="top" secondItem="RiK-K8-n38" secondAttribute="bottom" constant="8" id="AEm-y9-ZBh"/>
+                            <constraint firstItem="7uK-Qc-MMZ" firstAttribute="leading" secondItem="46J-oe-3RG" secondAttribute="leadingMargin" constant="-20" id="E9D-Sn-0NG"/>
+                            <constraint firstItem="2pK-ID-leh" firstAttribute="top" secondItem="3aS-e5-E4G" secondAttribute="bottom" constant="20" id="GWR-Ju-ER3"/>
+                            <constraint firstItem="3aS-e5-E4G" firstAttribute="leading" secondItem="DY2-D7-Ybi" secondAttribute="trailing" constant="8" id="H2R-o3-VNp"/>
+                            <constraint firstItem="KNI-JV-AMG" firstAttribute="leading" secondItem="46J-oe-3RG" secondAttribute="leadingMargin" id="HH5-bi-oE1"/>
+                            <constraint firstItem="DY2-D7-Ybi" firstAttribute="leading" secondItem="KNI-JV-AMG" secondAttribute="trailing" constant="8" id="LcZ-HS-l3h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7uK-Qc-MMZ" secondAttribute="trailing" constant="-20" id="N1O-4v-UwH"/>
+                            <constraint firstItem="RiK-K8-n38" firstAttribute="centerX" secondItem="46J-oe-3RG" secondAttribute="centerX" id="OiG-d5-aAU"/>
+                            <constraint firstItem="7uK-Qc-MMZ" firstAttribute="top" secondItem="46J-oe-3RG" secondAttribute="topMargin" id="fc2-cz-oKN"/>
+                            <constraint firstItem="2pK-ID-leh" firstAttribute="top" secondItem="KNI-JV-AMG" secondAttribute="bottom" constant="25" id="i5J-cM-HJs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3aS-e5-E4G" secondAttribute="trailing" id="kce-OD-3kh"/>
+                            <constraint firstItem="2pK-ID-leh" firstAttribute="top" secondItem="DY2-D7-Ybi" secondAttribute="bottom" constant="25" id="uOp-yI-Aqe"/>
+                            <constraint firstItem="RiK-K8-n38" firstAttribute="top" secondItem="7uK-Qc-MMZ" secondAttribute="bottom" constant="16" id="zFP-6P-B9b"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bezierView" destination="7uK-Qc-MMZ" id="lZQ-cS-Agi"/>
+                        <outlet property="curveSelector" destination="RiK-K8-n38" id="EVt-ty-Jxf"/>
+                        <outlet property="numberOfSegmentsLabel" destination="DY2-D7-Ybi" id="sXh-FV-7tA"/>
+                        <outlet property="numberOfSegmentsSlider" destination="3aS-e5-E4G" id="XA5-En-KOK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6i-X2-gJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
 </document>

@@ -12,6 +12,7 @@
 		9A2CD2711CF77FA90072E55D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2CD26F1CF77FA90072E55D /* Main.storyboard */; };
 		9A2CD2731CF77FA90072E55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A2CD2721CF77FA90072E55D /* Assets.xcassets */; };
 		9A2CD2761CF77FA90072E55D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2CD2741CF77FA90072E55D /* LaunchScreen.storyboard */; };
+		9A2CD27E1CF77FB70072E55D /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2CD27D1CF77FB70072E55D /* BezierCurve.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		9A2CD2721CF77FA90072E55D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A2CD2751CF77FA90072E55D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A2CD2771CF77FA90072E55D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A2CD27D1CF77FB70072E55D /* BezierCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierCurve.swift; sourceTree = "<group>"; };
+		9A2CD27F1CF78A850072E55D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +59,9 @@
 			children = (
 				9A2CD26B1CF77FA90072E55D /* AppDelegate.swift */,
 				9A2CD26D1CF77FA90072E55D /* ViewController.swift */,
+				9A2CD27D1CF77FB70072E55D /* BezierCurve.swift */,
 				9A2CD26F1CF77FA90072E55D /* Main.storyboard */,
+				9A2CD27F1CF78A850072E55D /* MyPlayground.playground */,
 				9A2CD2721CF77FA90072E55D /* Assets.xcassets */,
 				9A2CD2741CF77FA90072E55D /* LaunchScreen.storyboard */,
 				9A2CD2771CF77FA90072E55D /* Info.plist */,
@@ -136,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A2CD26E1CF77FA90072E55D /* ViewController.swift in Sources */,
+				9A2CD27E1CF77FB70072E55D /* BezierCurve.swift in Sources */,
 				9A2CD26C1CF77FA90072E55D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
