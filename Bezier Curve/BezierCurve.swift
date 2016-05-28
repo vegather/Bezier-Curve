@@ -232,17 +232,6 @@ class BezierCurve: UIView {
     
     
     
-    
-    // -------------------------------
-    // MARK: HandleView Delegate
-    // -------------------------------
-    
-    func handleMoved() { setNeedsDisplay() }
-    
-    
-    
-    
-    
     // -------------------------------
     // MARK: Bezier Computation
     // -------------------------------
