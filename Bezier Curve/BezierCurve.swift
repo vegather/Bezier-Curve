@@ -30,6 +30,9 @@ class BezierCurve: UIView {
     private var control1: HandleView!
     private var control2: HandleView!
     
+    // These have values from 0 to 1, and represent the position
+    // of the centers of the handles as a percentage of the size
+    // of the view.
     private var relativeAnchor1Pos  = CGPoint(x: 0.2, y: 0.7)
     private var relativeAnchor2Pos  = CGPoint(x: 0.8, y: 0.7)
     private var relativeControl1Pos = CGPoint(x: 0.3, y: 0.3)
@@ -148,8 +151,8 @@ class BezierCurve: UIView {
         guard let pannedView = panner.view else { return }
         
         let translation = panner.translationInView(pannedView)
-        pannedView.frame.origin.x += min(bounds.width , max(0, translation.x))
-        pannedView.frame.origin.y += min(bounds.height, max(0, translation.y))
+        pannedView.frame.origin.x = min(bounds.width  - handleSize, max(0, pannedView.frame.origin.x + translation.x))
+        pannedView.frame.origin.y = min(bounds.height - handleSize, max(0, pannedView.frame.origin.y + translation.y))
         panner.setTranslation(CGPointZero, inView: pannedView)
         
         var relativePos = CGPoint(
