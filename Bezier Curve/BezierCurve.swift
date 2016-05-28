@@ -32,11 +32,12 @@ class BezierCurve: UIView {
     
     // These have values from 0 to 1, and represent the position
     // of the centers of the handles as a percentage of the size
-    // of the view.
-    private var relativeAnchor1Pos  = CGPoint(x: 0.2, y: 0.7)
-    private var relativeAnchor2Pos  = CGPoint(x: 0.8, y: 0.7)
-    private var relativeControl1Pos = CGPoint(x: 0.3, y: 0.3)
-    private var relativeControl2Pos = CGPoint(x: 0.7, y: 0.3)
+    // of the view. The initial values are set to match the
+    // logo as close as possible
+    private var relativeAnchor1Pos  = CGPoint(x: 0.28, y: 0.35)
+    private var relativeAnchor2Pos  = CGPoint(x: 0.72, y: 0.65)
+    private var relativeControl1Pos = CGPoint(x: 0.28, y: 0.65)
+    private var relativeControl2Pos = CGPoint(x: 0.72, y: 0.35)
     
     
     
@@ -196,19 +197,19 @@ class BezierCurve: UIView {
     }
     
     private func drawGraph() {
-        let path = UIBezierPath()
-        path.lineWidth = 3.0
+        let curve = UIBezierPath()
+        curve.lineWidth = 3.0
         
         for i in 0...numberOfLineSegments {
             let t = Double(i) / Double(numberOfLineSegments)
             let point = bezier(t)
             
-            if i == 0 { path.moveToPoint(point) }
-            else      { path.addLineToPoint(point) }
+            if i == 0 { curve.moveToPoint(point) }
+            else      { curve.addLineToPoint(point) }
         }
         
         UIColor.blackColor().setStroke()
-        path.stroke()
+        curve.stroke()
     }
     
     private func drawHandles() {
@@ -247,9 +248,9 @@ class BezierCurve: UIView {
     private func bezier(t: Double) -> CGPoint {
         let points: [CGPoint]
         switch degree {
-            case .Linear   : points = [anchor1, anchor2]                    .map() { $0.frame.center }
-            case .Quadratic: points = [anchor1, control1, anchor2]          .map() { $0.frame.center }
-            case .Cubic    : points = [anchor1, control1, control2, anchor2].map() { $0.frame.center }
+            case .Linear    : points = [anchor1,                     anchor2].map() { $0.frame.center }
+            case .Quadratic : points = [anchor1, control1,           anchor2].map() { $0.frame.center }
+            case .Cubic     : points = [anchor1, control1, control2, anchor2].map() { $0.frame.center }
         }
         
         var accumulatedPoint = CGPointZero
@@ -322,11 +323,11 @@ private class HandleView: UIView {
     
     private func circleWithPoint(point: CGPoint, radius: CGFloat) -> UIBezierPath {
         return UIBezierPath(
-            arcCenter: point,
-            radius: radius,
-            startAngle: 0.0,
-            endAngle: CGFloat(M_PI * 2),
-            clockwise: true
+            arcCenter  : point,
+            radius     : radius,
+            startAngle : 0.0,
+            endAngle   : CGFloat(M_PI * 2),
+            clockwise  : true
         )
     }
     
@@ -339,7 +340,7 @@ private class HandleView: UIView {
     private let minimumHitTarget = 50.0
     
     private override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        // Ensures a hit target of at least 40x40 points
+        // Ensures a hit target of at least 50x50 points
         if point.x >= CGFloat(min(0.0                  , Double(bounds.midX) - minimumHitTarget / 2)) &&
            point.x <= CGFloat(max(Double(bounds.width) , Double(bounds.midX) + minimumHitTarget / 2)) &&
            point.y >= CGFloat(min(0.0                  , Double(bounds.midY) - minimumHitTarget / 2)) &&
