@@ -155,7 +155,7 @@ class BezierCurve: UIView {
         pannedView.frame.origin.y = min(bounds.height - handleSize, max(0, pannedView.frame.origin.y + translation.y))
         panner.setTranslation(CGPointZero, inView: pannedView)
         
-        var relativePos = CGPoint(
+        let relativePos = CGPoint(
             x: pannedView.frame.midX / bounds.width,
             y: pannedView.frame.midY / bounds.height
         )
