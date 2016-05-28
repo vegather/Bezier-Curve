@@ -3,7 +3,7 @@ A simple demonstration of a Swift implementation of a bezier curve. Inspired by 
 
 ### Screenshots
 <a href="http://imgur.com/eKbtfmU.png">
-    <img src="http://imgur.com/eKbtfmU.png" width="350" style="margin: 10px;" border="10" alt="Screenshot 1">
+    <img src="http://imgur.com/eKbtfmU.png" width="350" style="margin: 10px;" alt="Screenshot 1">
 </a>
 <a href="http://imgur.com/xplX2II.png">
     <img src="http://imgur.com/xplX2II.png" width="350" style="margin: 10px;" alt="Screenshot 2">
